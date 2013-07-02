@@ -1,8 +1,8 @@
 <article class="osbekro-comment">
     <header>
-        <h1 style="display: inline; font-size:14px;">{{comment.authorName}}</h1>, {{comment.created|date("d-m-Y")}}
+        <h1>{{comment.authorName}}</h1>, {{comment.created|date("d-m-Y")}}
     </header>
-    <div class="osbekro-comment-content" style="background: url(/bundles/pamfrontend/images/bg.jpg) repeat-x; border: 1px solid #183c71; overflow:hidden; padding-top: 5px;">
+    <div class="osbekro-comment-content">
     <div style="float:left; padding:5px;">
         <img src="{{ getUserPhoto(comment.author) | apply_filter('micro_thumb') }}" /></div>
     <p>{{comment.body}}</p>
