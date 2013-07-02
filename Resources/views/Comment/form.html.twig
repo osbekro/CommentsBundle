@@ -1,0 +1,10 @@
+<form
+    class = "osbekro-comments-post-form"
+    method = "post"
+    action = "{{path('osbekro_comments_comment_create', {'id':form.vars.data.object.id})}}"
+    data-thread-id = "{{form.vars.data.object.id}}"
+>
+{{form_widget(form.body, {'attr': {'style': 'width:220px; height:200px;border:1px solid #183c71l; background: #ebebeb; color:'}})}}
+{{form_widget(form._token)}}
+<button type="submit" style="background: black url('/bundles/pamfrontend/images/bg-short.png') repeat-x; width: 100%; display: block; color: white; border: none; line-height: 40px; padding-top: 5px;">{{'Comment'|trans}}</button>
+</form>

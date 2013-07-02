@@ -1,0 +1,29 @@
+{% if nodiv != '1' %}
+<div id="osbekro-comment-{{thread.id}}"
+    class="osbekro-comments-box"
+    data-source="{{path('osbekro_comments_thread_view', {'id':thread.id, '_format':'html'})}}"
+    data-thread-id = "{{thread.id}}">
+{% endif %}
+
+{% if comments|length > 0 %}
+    <ul class="osbekro-comment-list">
+    {% for comment in comments %}
+        <li>{% render(controller('OsbekroCommentsBundle:Comment:view', {'comment': comment})) %}</li>
+    {% endfor %}
+    </ul>
+<div class="osbekro-pager">
+    <ul class="osbekro-pages-list paginator">
+        {% for i in range(0, numberOfComments / perPage) %}
+        <li><a href="?page={{i}}" data-thread-page="{{i}}" >{{i}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% else %}
+    <div>
+        <h3>{{'No comments found'|trans}}</h3>
+    </div>
+{% endif %}
+
+{% if nodiv != '1' %}
+</div>
+{% endif %}
