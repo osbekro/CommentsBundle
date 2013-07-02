@@ -1,0 +1,23 @@
+.osbekro-comments-post-form button{
+    /* TODO: Make symbolic link instead copying */
+    background: black url('/bundles/pamfrontend/images/bg-short.png') repeat-x;
+    width: 100%;
+    display: block;
+    color: white;
+    border: none;
+    line-height: 40px;
+    padding-top: 5px;
+}
+
+.osbekro-comment > header > h1 {
+    display: inline;
+    font-size:14px;
+}
+
+.osbekro-comment-content {
+    /* TODO: Make symbolic link instead copying */
+    background: url(/bundles/pamfrontend/images/bg.jpg) repeat-x;
+    border: 1px solid #183c71;
+    overflow: hidden;
+    padding-top: 5px;
+}
