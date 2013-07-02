@@ -1,32 +1,42 @@
-(function () {
+(function() {
     'use strict';
     function noop() { };
 
-    var OsbekroCommentBox = function (element) {
+    var OsbekroCommentBox = function(element) {
         this.commentBox = null;
         this.element = element;
         this.url = element.getAttribute('data-source');
     };
 
-    OsbekroCommentBox.prototype.load = function (page, limit) {
+    OsbekroCommentBox.prototype.load = function(page, limit) {
         var request = new XMLHttpRequest();
         request.onload = reloadElement;
-        request.open("get", this.url + '?page=' + parseInt(page, 10) + '&limit=' + parseInt(limit, 10), true);
+        request.open(
+            'get',
+            this.url +
+                '?page=' + parseInt(page, 10) +
+                '&limit=' + parseInt(limit, 10), true
+        );
         request.send();
     };
 
-    OsbekroCommentBox.prototype.reload = function () {
+    OsbekroCommentBox.prototype.reload = function() {
         var request = new XMLHttpRequest(),
             limit = 3,
             that = this;
-        request.open("get", this.url + '?limit=' + parseInt(limit, 10) + '&nodiv=1', true);
-        request.setRequestHeader('X-Requested-With','XMLHttpRequest');
+        request.open(
+            'get',
+            this.url +
+                '?limit=' +
+                parseInt(limit, 10) + '&nodiv=1', true
+            );
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
-        request.onload = function () {
+        request.onload = function() {
             that.element.innerHTML = this.responseText;
         };
         request.send();
-    }
+    };
 
     OsbekroCommentBox.prototype.attachPager = function() {
         var pagesLists = this.element.getElementsByClassName('osbekro-pages-list'),
@@ -47,24 +57,24 @@
         }
     };
 
-    var OsbekroCommentForm = function (element) {
+    var OsbekroCommentForm = function(element) {
         var that = this;
         this.element = element;
         element.onsubmit = function() {
             var request = new XMLHttpRequest();
-            request.onload = function () {
+            request.onload = function() {
                 if (that.commentBox instanceof OsbekroCommentBox) {
                     that.commentBox.reload();
                 }
             };
             request.open(element.getAttribute('method'), element.getAttribute('action'));
-            request.setRequestHeader('X-Requested-With','XMLHttpRequest');
+            request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             request.send(new FormData(element));
             return false;
-        }
-    }
+        };
+    };
 
-    OsbekroCommentBox.prototype.appendHtml = function (commentHtml, removeLast) {
+    OsbekroCommentBox.prototype.appendHtml = function(commentHtml, removeLast) {
         var listElement = this.element.getElementsByClassName('osbekro-comment-list')[0],
             i;
 
@@ -79,7 +89,7 @@
         }
     };
 
-    document.addEventListener("DOMContentLoaded", function (event) {
+    document.addEventListener('DOMContentLoaded', function(event) {
         var elements = document.getElementsByClassName('osbekro-comments-box'),
             formElements = document.getElementsByClassName('osbekro-comments-post-form'),
             comments = {},
@@ -99,7 +109,7 @@
             tmpBox.attachPager();
         }
 
-        for (i = 0, l = formElements.length; i < l; i += 1 ) {
+        for (i = 0, l = formElements.length; i < l; i += 1) {
             tid = formElements[i].getAttribute('data-thread-id');
 
             if (tid !== null) {
@@ -114,4 +124,4 @@
 
     });
 
-}())
+}());
