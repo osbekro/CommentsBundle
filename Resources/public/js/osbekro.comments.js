@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+    function noop() { };
 
     var OsbekroCommentBox = function (element) {
         this.commentBox = null;
@@ -28,7 +29,22 @@
     }
 
     OsbekroCommentBox.prototype.attachPager = function() {
-        //TBI
+        var pagesLists = this.element.getElementsByClassName('osbekro-pages-list'),
+            i, k,
+            j, l,
+            liElem,
+            pageReload = noop;
+        //TODO: Use query path to access a element
+        for (i = 0, k = pagesLists.length; i < k; i += 1) {
+            liElem = pagesLists[i].children;
+            for (j = 0, l = liElem.length; j < l; j += 1) {
+                var current = liElem[j].getElementsByTagName('a')[0];
+                if (current !== null) {
+                    //TODO: Add real function, with prevent default
+                    current.addEventListener('click', pageReload.bind(this));
+                }
+            }
+        }
     };
 
     var OsbekroCommentForm = function (element) {
@@ -68,16 +84,19 @@
             formElements = document.getElementsByClassName('osbekro-comments-post-form'),
             comments = {},
             forms = {},
-            i, l, tid = null;
+            i, l,
+            tmpBox = null,
+            tid = null; //Thread ID
 
         for (i = 0, l = elements.length; i < l; i += 1) {
             tid = elements[i].getAttribute('data-thread-id');
-
+            tmpBox = new OsbekroCommentBox(elements[i]);
             if (tid !== null) {
-                comments[tid] = new OsbekroCommentBox(elements[i]);
+                comments[tid] = tmpBox;
             } else {
-                comments['u' + tid] = new OsbekroCommentBox(elements[i]);
+                comments['u' + tid] = tmpBox;
             }
+            tmpBox.attachPager();
         }
 
         for (i = 0, l = formElements.length; i < l; i += 1 ) {
