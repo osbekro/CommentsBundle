@@ -14,7 +14,12 @@
 <div class="osbekro-pager">
     <ul class="osbekro-pages-list">
         {% for i in pages %}
-        <li><a href="?page={{i}}" data-thread-page="{{i}}" >{{i}}</a></li>
+        <li>
+            <a href="?page={{i}}" data-thread-page="{{i}}" >{{i}}</a>
+            {% if page == i %}
+                <div class="osbekro-comments-page-marker"></div>
+            {% endif %}
+        </li>
         {% endfor %}
         {% if more is not null %}
         <li>
