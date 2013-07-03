@@ -21,3 +21,28 @@
     overflow: hidden;
     padding-top: 5px;
 }
+
+.osbekro-pager {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.osbekro-pages-list {
+    width: 610px;
+    display: inline-block;
+    border: 1px solid #183c71;
+    background: #e0e0e0;
+}
+
+.osbekro-pages-list > li {
+    float: left;
+}
+.osbekro-pages-list > li > a {
+    display:block;
+    width: 70px;
+    color: #7f7f7f;
+}
+
+.osbekro-pages-list > li > a.blue {
+    color: #183c71;
+}

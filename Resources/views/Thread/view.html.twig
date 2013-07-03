@@ -12,10 +12,15 @@
     {% endfor %}
     </ul>
 <div class="osbekro-pager">
-    <ul class="osbekro-pages-list paginator">
-        {% for i in range(0, numberOfComments / perPage) %}
+    <ul class="osbekro-pages-list">
+        {% for i in pages %}
         <li><a href="?page={{i}}" data-thread-page="{{i}}" >{{i}}</a></li>
         {% endfor %}
+        {% if more is not null %}
+        <li>
+            <a href="?page={{more}}" class="blue" data-thread-page="{{more}}" >{{'More'|trans}}</a>
+        </li>
+        {% endif %}
     </ul>
 </div>
 {% else %}

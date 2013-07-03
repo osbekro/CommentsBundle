@@ -21,25 +21,73 @@ class ThreadController extends Controller
 
         $numberOfComments = $this->get('osbekro.comments.manager')->countComments($thread);
 
+        $pages = ceil($numberOfComments / $perPage);
+        $start = 1;
+        $end = 7;
+        $more = null;
+        if ($pages > 7) {
+            $more = $page + 7;
+            $start = $page - 3;
+            if ($start<1) {
+                $start = 1;
+            }
+            $end = $start + 6;
+            if ($end > $pages) {
+                $end = $pages;
+                $start = $end - 6;
+            }
+            $more = $page + 7;
+            if ($more > $pages) {
+                $more = $pages;
+            }
+        }
+        $pagesArray = range($start, $end);
+
         return $this->render('OsbekroCommentsBundle:Thread:view.html.twig', array(
                 'comments' => $comments,
                 'thread' => $thread,
                 'nodiv'=>$request->get('nodiv', 0),
                 'perPage'=>$perPage,
-                'numberOfComments' => $numberOfComments,
+                'pages' => $pagesArray,
+                'more' => $more,
+                'page'=> $page,
+                'numberOfComments' => $numberOfComments, 
         ));
     }
 
-    public function viewAction(Request $request, $object, $page = 0, $perPage = 3)
+    public function viewAction(Request $request, $object, $page = 1, $perPage = 3)
     {
         $thread = $this->get('osbekro.comments.manager')->getThreadFor($object);
-        $comments = $this->get('osbekro.comments.manager')->getThreadComments($thread, $page, $perPage);
+        $comments = $this->get('osbekro.comments.manager')->getThreadComments($thread, $page-1, $perPage);
         $numberOfComments = $this->get('osbekro.comments.manager')->countComments($thread);
+        $pages = ceil($numberOfComments / $perPage);
+        $start = 1;
+        $end = 7;
+        $more = null;
+        if ($pages > 7) {
+            $start = $page - 3;
+            if ($start<1) {
+                $start = 1;
+            }
+            $end = $start + 6;
+            if ($end > $pages) {
+                $end = $pages;
+                $start = $end - 6;
+            }
+            $more = $page + 7;
+            if ($more > $pages) {
+                $more = $pages;
+            }
+        }
+        $pagesArray = range($start, $end);
         return $this->render('OsbekroCommentsBundle:Thread:view.html.twig', array(
                 'comments' => $comments,
                 'thread' => $thread,
                 'nodiv'=>$request->get('nodiv', 0),
                 'perPage'=>$perPage,
+                'pages' => $pagesArray,
+                'more' => $more,
+                'page'=> $page,
                 'numberOfComments' => $numberOfComments
             ));
     }

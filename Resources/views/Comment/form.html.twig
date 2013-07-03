@@ -1,10 +1,15 @@
+
 <form
     class = "osbekro-comments-post-form"
     method = "post"
     action = "{{path('osbekro_comments_comment_create', {'id':form.vars.data.object.id})}}"
     data-thread-id = "{{form.vars.data.object.id}}"
 >
+{% if app.user %}
     {{form_widget(form.body, {'attr': {'style': 'width:220px; height:200px;border:1px solid #183c71l; background: #ebebeb; color:'}})}}
     {{form_widget(form._token)}}
     <button type="submit">{{'Comment'|trans}}</button>
+    {% else %}
+    <a href="#">Login</a>
+    {% endif %}
 </form>
