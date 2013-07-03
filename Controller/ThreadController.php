@@ -23,7 +23,7 @@ class ThreadController extends Controller
 
         $pages = ceil($numberOfComments / $perPage);
         $start = 1;
-        $end = 7;
+        $end = $pages;
         $more = null;
         if ($pages > 7) {
             $more = $page + 7;
