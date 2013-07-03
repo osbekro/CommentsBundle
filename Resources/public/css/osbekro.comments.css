@@ -8,7 +8,9 @@
     line-height: 40px;
     padding-top: 5px;
 }
-
+.osbekro-comments-post-form > .osbekro-logged-message {
+    width:210px;
+}
 .osbekro-comment > header > h1 {
     display: inline;
     font-size:14px;
@@ -57,4 +59,11 @@
     width:70px;
     left:-4px;
     top:-4px;
+}
+
+.osbekro-comment-input {
+    width:220px;
+    height:200px;
+    border:1px solid #183c71;
+    background: #ebebeb;
 }

@@ -6,10 +6,12 @@
     data-thread-id = "{{form.vars.data.object.id}}"
 >
 {% if app.user %}
-    {{form_widget(form.body, {'attr': {'style': 'width:220px; height:200px;border:1px solid #183c71l; background: #ebebeb; color:'}})}}
+    {{form_widget(form.body, {'attr': {'class':'osbekro-comment-input'}})}}
     {{form_widget(form._token)}}
     <button type="submit">{{'Comment'|trans}}</button>
     {% else %}
-    <a href="#">Login</a>
+        <span class='osbekro-logged-message'>
+            {{'You have to be logged in to post comment.'|trans}}
+        </span>
     {% endif %}
 </form>
