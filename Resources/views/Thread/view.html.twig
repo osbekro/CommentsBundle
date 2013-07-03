@@ -1,8 +1,8 @@
 {% if nodiv != '1' %}
-<div id="osbekro-comment-{{thread.id}}"
-    class="osbekro-comments-box"
-    data-source="{{path('osbekro_comments_thread_view', {'id':thread.id, '_format':'html'})}}"
-    data-thread-id = "{{thread.id}}">
+    <div id="osbekro-comment-{{thread.id}}"
+        class="osbekro-comments-box"
+        data-source="{{path('osbekro_comments_thread_view', {'id':thread.id, '_format':'html'})}}"
+        data-thread-id = "{{thread.id}}">
 {% endif %}
 
 {% if comments|length > 0 %}
@@ -11,23 +11,23 @@
         <li>{% render(controller('OsbekroCommentsBundle:Comment:view', {'comment': comment})) %}</li>
     {% endfor %}
     </ul>
-<div class="osbekro-pager">
-    <ul class="osbekro-pages-list">
-        {% for i in pages %}
-        <li>
-            <a href="?page={{i}}" data-thread-page="{{i}}" >{{i}}</a>
-            {% if page == i %}
-                <div class="osbekro-comments-page-marker"></div>
+    <div class="osbekro-pager">
+        <ul class="osbekro-pages-list">
+            {% for i in pages %}
+            <li>
+                <a href="?page={{i}}" data-thread-page="{{i}}" >{{i}}</a>
+                {% if page == i %}
+                    <div class="osbekro-comments-page-marker"></div>
+                {% endif %}
+            </li>
+            {% endfor %}
+            {% if more is not null %}
+            <li>
+                <a href="?page={{more}}" class="blue" data-thread-page="{{more}}" >{{'More'|trans}}</a>
+            </li>
             {% endif %}
-        </li>
-        {% endfor %}
-        {% if more is not null %}
-        <li>
-            <a href="?page={{more}}" class="blue" data-thread-page="{{more}}" >{{'More'|trans}}</a>
-        </li>
-        {% endif %}
-    </ul>
-</div>
+        </ul>
+    </div>
 {% else %}
     <div>
         <h3>{{'No comments found'|trans}}</h3>
@@ -35,5 +35,5 @@
 {% endif %}
 
 {% if nodiv != '1' %}
-</div>
+    </div>
 {% endif %}
