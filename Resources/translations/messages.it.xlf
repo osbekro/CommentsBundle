@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="it" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="5f94404bf7a236db3599df0135a590ac" resname="Post comment">
+        <source>Post comment</source>
+        <target>__Post comment</target>
+      </trans-unit>
+      <trans-unit id="2dddad044da977263b36a6e30c1d9cdc" resname="You have to be logged in to post comment.">
+        <source>You have to be logged in to post comment.</source>
+        <target>__You have to be logged in to post comment.</target>
+      </trans-unit>
+      <trans-unit id="d3da97e2d9aee5c8fbe03156ad051c99" resname="More">
+        <source>More</source>
+        <target>__More</target>
+      </trans-unit>
+      <trans-unit id="515513ee9449fdd7745af0fcb0e1b078" resname="No comments found">
+        <source>No comments found</source>
+        <target>__No comments found</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
