@@ -40,6 +40,11 @@ class ThreadController extends Controller
             if ($more > $pages) {
                 $more = $pages;
             }
+        } else {
+            $end = $pages - 7;
+            if ($end < 1) {
+                $end = 1;
+            }
         }
         $pagesArray = range($start, $end);
 
@@ -77,6 +82,11 @@ class ThreadController extends Controller
             $more = $page + 7;
             if ($more > $pages) {
                 $more = $pages;
+            }
+        } else {
+            $end = $pages - 7;
+            if ($end < 1) {
+                $end = 1;
             }
         }
         $pagesArray = range($start, $end);
