@@ -8,7 +8,7 @@
 {% if app.user %}
     {{form_widget(form.body, {'attr': {'class':'osbekro-comment-input'}})}}
     {{form_widget(form._token)}}
-    <button type="submit">{{'Comment'|trans}}</button>
+    <button type="submit">{{'Post comment'|trans}}</button>
     {% else %}
         <span class='osbekro-logged-message'>
             {{'You have to be logged in to post comment.'|trans}}
