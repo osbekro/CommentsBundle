@@ -62,9 +62,10 @@ class ThreadController extends Controller
 
     public function viewAction(Request $request, $object, $page = 1, $perPage = 3)
     {
-        $thread = $this->get('osbekro.comments.manager')->getThreadFor($object);
-        $comments = $this->get('osbekro.comments.manager')->getThreadComments($thread, $page-1, $perPage);
-        $numberOfComments = $this->get('osbekro.comments.manager')->countComments($thread);
+        $commentsManager = $this->get('osbekro.comments.manager');
+        $thread = $commentsManager->getThreadFor($object);
+        $comments = $commentsManager->getThreadComments($thread, $page-1, $perPage);
+        $numberOfComments = $commentsManager->countComments($thread);
         $pages = ceil($numberOfComments / $perPage);
         $start = 1;
         $end = 7;

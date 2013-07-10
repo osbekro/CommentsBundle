@@ -46,6 +46,12 @@ class CommentManager
 
     public function getThreadComments(CommentableObject $thread, $page, $perPage)
     {
+        if ($page < 0) {
+            $page = 0;
+        }
+        if ($perPage < 0) {
+            $perPage = 0;
+        }
         return $this
             ->entityManager
             ->getRepository('OsbekroCommentsBundle:Comment')
