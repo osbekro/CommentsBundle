@@ -1,6 +1,8 @@
 <?php
 
 namespace Osbekro\CommentsBundle\Entity;
+use Osbekro\VideoPortal\Bundle\VideoPortalFrameworkBundle\Entity\MaterialIdentity;
+
 
 /**
  * Comment
@@ -25,7 +27,7 @@ class Comment
     protected $authorName;
 
 
-    public function __construct(CommentableObject $object = null)
+    public function __construct(MaterialIdentity $object = null)
     {
         if ($object !== null) {
             $this->setObject($object);
@@ -69,7 +71,7 @@ class Comment
         return $this->object;
     }
 
-    public function setObject(CommentableObject $object)
+    public function setObject(MaterialIdentity $object)
     {
         $this->object = $object;
         return $this;

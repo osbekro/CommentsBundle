@@ -20,7 +20,7 @@
     <many-to-one field="author" target-entity="Osbekro\CommentsBundle\Model\AuthorInterface">
         <join-column name="author_id" referenced-column-name="id"/>
     </many-to-one>
-    <many-to-one field="object" target-entity="Osbekro\CommentsBundle\Entity\CommentableObject">
+        <many-to-one field="identity" target-entity="Osbekro\VideoPortal\Bundle\VideoPortalFrameworkBundle\Entity\MaterialIdentity">
         <join-column name="object_id" referenced-column-name="id"/>
     </many-to-one>
   </entity>
