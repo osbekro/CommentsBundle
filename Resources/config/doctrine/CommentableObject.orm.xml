@@ -5,7 +5,8 @@
     xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"
     xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
   <entity
-    name="Osbekro\CommentsBundle\Entity\CommentableObject">
+    name="Osbekro\CommentsBundle\Entity\CommentableObject"
+    table="materialidentities">
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>
